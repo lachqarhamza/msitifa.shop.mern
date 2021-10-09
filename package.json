@@ -5,13 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"cd server && npm run start:dev\" \"cd client && npm run start\""
+    "start": "concurrently \"cd api && npm run start:dev\" \"cd client && npm run start\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lachqarhamza/msitifa.shop.mern.git"
   },
-  "author": "",
+  "author": "LACHQAR HAMZA",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lachqarhamza/msitifa.shop.mern/issues"

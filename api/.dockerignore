@@ -1,0 +1,10 @@
+./node_modules
+./.env
+./config.env
+./deploy.env
+./Makefile
+./config/db.js
+./config/keys.js
+./.gitignore
+./*.sh
+./Dockerfile

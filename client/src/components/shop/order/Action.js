@@ -39,7 +39,7 @@ export const pay = async (
   totalCost,
   history
 ) => {
-  console.log(state);
+  // console.log(state);
   if (!state.address) {
     setState({ ...state, error: "Please provide your address" });
   } else if (!state.phone) {

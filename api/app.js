@@ -67,7 +67,7 @@ app.use("/api/order", orderRouter);
 app.use("/api/customize", customizeRouter);
 
 // Run Server
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log("Server is running on ", PORT);
 });

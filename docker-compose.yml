@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  nginx:
+    depends_on:
+      - client
+      - api
+    restart: always # because it is routing traffic to our entire app
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '80:80'
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    #ports:
+    #  - '3000:3000'
+    volumes:
+      - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
+    restart: on-failure
+    container_name: client
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    #ports:
+    #  - '3001:3001'
+    restart: on-failure
+    container_name: api
+    volumes:
+      - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
+    env_file:
+      - ./env/api.env
+  mongo:
+    image: 'mongo'
+    container_name: 'mongo'
+    ports:
+      - '27017-27019:27017-27019'
+    volumes: 
+      - ./db/init/:/docker-entrypoint-initdb.d
+      - ./db/init:/home/mongodb
+      - ./db/seed/:/home/mongodb/seed
+      - ./db/mongo-volume:/data/db
+    env_file:
+      - ./env/mongo.env
